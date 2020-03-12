@@ -4,8 +4,9 @@ import numpy as np
 
 
 # Target distribution samples Gamma distributed
-gamma = torch.distributions.Gamma(1, 3)
-X_true = gamma.sample((1000, 1))
+gamma1 = torch.distributions.Gamma(1, 3)
+gamma2 = torch.distributions.Gamma(3, 1)
+X_true = gamma1.sample((1000, 1)) + gamma2.sample((1000, 1))
 
 # Target distribution samples MoG distributed (Exhibits mode collapse)
 # X_0 = torch.randn(1000)
@@ -43,7 +44,7 @@ g = Generator(1, 16, 1)
 Z_0 = torch.randn(1000, 1)
 
 # Run for 25000 iterations
-n_iters = 2500
+n_iters = 25000
 
 # Number of samples per update step
 m = 64
